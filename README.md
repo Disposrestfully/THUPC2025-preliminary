@@ -5,10 +5,10 @@
 | A    | 骑行计划   | Cycling Plan | xza    |        |
 | B    |            | rds          | chj    |        |
 | C    |            | P1           | gyh    | ljh    |
-| D    |            | P2           | gyh    | ljh    |
+| D    |            | dhondt       | chj    | cxr    |
 | E    |            | split        | wzt    |        |
 | F    |            | sort         | psj    |        |
-| G    |            | dhondt       | chj    | cxr    |
+| G    |            | P2           | gyh    | ljh    |
 | H    |            | jump         | dhw    | cxr    |
 | I    | 乒乓球赛   |              | gyh    | zym    |
 | J    | 临别纪念   |              | zym    |        |
