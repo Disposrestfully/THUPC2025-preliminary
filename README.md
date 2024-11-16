@@ -4,7 +4,7 @@
 | ---- | ---------- | ------------ | ------ | ------ |
 | A    | 骑行计划   | Cycling Plan | xza    |        |
 | B    |            | rds          | chj    |        |
-| C    |            | P1           | gyh    | ljh    |
+| C    |            | Harmful Machine Learning| gyh    | ljh    |
 | D    |            | dhondt       | chj    | cxr    |
 | E    |            | split        | wzt    |        |
 | F    |            | sort         | psj    |        |
