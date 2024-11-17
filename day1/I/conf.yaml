@@ -1,21 +1,62 @@
 args:
-  n: 1000
+  n: 100000
 compile:
   c: -O2 -std=c11
   cpp: -O2 -std=c++14
   java: ''
   pas: -O2
   py: ''
-data: []
+data:
+- cases:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
 folder: problem
 memory limit: 512 MiB
-name: I
+name: pingpong
 partial score: false
 pre: []
-samples: []
+samples:
+- cases:
+  - 1
 time limit: 1.0
 title:
-  zh-cn: 用于试题标题的中文名称
+  zh-cn: 乒乓球赛
 type: program
-users: {}
-version: 2
+users:
+  gyh:
+    std:
+      expected: == 100
+      path: ./gyh/std.cpp
+    wa:
+      expected: == 0
+      path: ./gyh/wa.cpp
+    wa1:
+      expected: == 0
+      path: ./gyh/wa1.cpp
+    wa2:
+      expected: == 0
+      path: ./gyh/wa2.cpp
+    wa3:
+      expected: == 0
+      path: ./gyh/wa3.cpp
+    wa4:
+      expected: == 0
+      path: ./gyh/wa4.cpp
+    wa5:
+      expected: == 0
+      path: ./gyh/wa5.cpp
+version: 1
