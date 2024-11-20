@@ -8,7 +8,7 @@
 | D    |            | dhondt       | chj    | cxr    |
 | E    |            | split        | wzt    |        |
 | F    |            | sort         | psj    |        |
-| G    |            | P2           | gyh    | ljh    |
+| G    |            | Imyourfan           | gyh    | ljh    |
 | H    | waht 先生的法阵           | Mr.waht         | dhw    | cxr    |
 | I    | 乒乓球赛   |              | gyh    | zym    |
 | J    | 临别纪念   |              | zym    |        |
