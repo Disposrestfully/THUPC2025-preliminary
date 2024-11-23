@@ -19,7 +19,9 @@ title:
   zh-cn: 检查站
 type: program
 users:
-  psj:
-    std: {expected: == 100, path: psj/std.cpp}
-    wrong: {expected: < 100, path: psj/wrong.cpp}
+  # psj:
+  #  std: {expected: == 100, path: psj/std.cpp}
+  #  wrong: {expected: < 100, path: psj/wrong.cpp}
+  cxr:
+    std: {expected: == 100, path: cxr/std.cpp}
 version: 2
