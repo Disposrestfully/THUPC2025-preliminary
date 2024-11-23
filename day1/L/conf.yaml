@@ -21,4 +21,5 @@ type: program
 users:
   psj:
     std: {expected: == 100, path: psj/std.cpp}
+    wrong: {expected: < 100, path: psj/wrong.cpp}
 version: 2
