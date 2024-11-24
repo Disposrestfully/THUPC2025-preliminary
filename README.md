@@ -11,7 +11,7 @@
 | G    |            | Imyourfan           | gyh    | ljh    |
 | H    | waht 先生的法阵           | Mr.waht         | dhw    | cxr    |
 | I    | 乒乓球赛   |              | gyh    | zym    |
-| J    | 辞甲猾扎   |              | zym    | dhw       |
+| J    | 辞甲猾扎   | cjhz | zym    | dhw       |
 | K    |            | reorder      | chj    |        |
 | L    |            | checkpoint   | psj    | cxr    |
 | M    | （整活题） |              | rsy    |        |
