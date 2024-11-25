@@ -5,7 +5,7 @@
 | A   | 骑行计划       | Cycling Plan             | xza |     |
 | B   | 挑战 LLM     | Beating LLM              | chj |     |
 | C   |            | Harmful Machine Learning | gyh | ljh |
-| D   |            | D'Hondt                  | chj | cxr |
+| D   | 摊位分配       | Distribution             | chj | cxr |
 | E   |            | split                    | wzt |     |
 | F   |            | sort                     | psj |     |
 | G   |            | Imyourfan                | gyh | ljh |
