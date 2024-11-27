@@ -14,7 +14,7 @@ name: A
 partial score: false
 samples:
 - cases: [1, 2]
-time limit: 1.0
+time limit: 2.0
 title:
   zh-cn: 骑行计划
 type: program
