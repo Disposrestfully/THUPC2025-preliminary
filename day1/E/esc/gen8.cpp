@@ -64,6 +64,7 @@ int main(){
 	for(int i=1;i<=m;++i){
 		double d=P(11)*0.95+1e-10;
 		long long cnt=std::floor(d)+std::bernoulli_distribution(d-std::floor(d))(gen);
+		if(cnt==0)cnt=1;
 		printf("%d %lld\n",now,cnt);
 		assert(now<=1000000000);
 		now+=P(11);

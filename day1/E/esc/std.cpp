@@ -67,6 +67,9 @@ int main(){
 		long long ans=st[now].l+d-1+(d+res>st[now].cnt());
 		printf("%lld\n",ans);
 	}
+	for(int i=1;i<tst;++i){
+		if(st[i].r+1==st[i+1].l)--tst;
+	}
 	fprintf(stderr,"%d\n",tst);
 	return 0;
 }
