@@ -23,4 +23,6 @@ type: program
 users:
   esc:
     std: {expected: ==100, path: esc/std.cpp}
+  psj:
+    std: {expected: ==100, path: esc/std.cpp}
 version: 2
