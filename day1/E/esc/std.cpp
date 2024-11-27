@@ -23,14 +23,14 @@ namespace io{
 }
 struct it{
 	long long l,r;
-	__int128_t sum,off;
+	long long sum,off;
 	it(){}
 	it(int x,int c): l(x-c/2),r(x+(c+1)/2),sum(1ll*x*c),off(sum-cnt()*(cnt()-1)/2){}
-	__int128_t cnt() const{
+	long long cnt() const{
 		return (long long)(r-l);
 	}
 	it& operator+=(const it &rhs){
-		__int128_t ncnt=cnt()+rhs.cnt();
+		long long ncnt=cnt()+rhs.cnt();
 		sum+=rhs.sum;
 		off=sum-ncnt*(ncnt-1)/2;
 		if(off>=0){
@@ -67,6 +67,5 @@ int main(){
 		long long ans=st[now].l+d-1+(d+res>st[now].cnt());
 		printf("%lld\n",ans);
 	}
-	fprintf(stderr,"%d\n",tst);
 	return 0;
 }
