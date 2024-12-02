@@ -49,7 +49,7 @@ inline void finalize_top(const int x) {
 	return ;
 }
 inline bool push_stack(const int x) {
-	if (stk[top].top_order() < perm[x]) return false;
+	if (top && stk[top].top_order() < perm[x]) return false;
 	stk[++top].init(x);
 	return true;
 }
