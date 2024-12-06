@@ -26,4 +26,6 @@ users:
   dhw:
     std: {expected: == 100, path: dhw/std.cpp}
     brute_force: {expected: <100, path: dhw/brute_force.cpp}
+  cxr:
+    std: {expected: < 100, path: cxr/2log.cpp}
 version: 2
