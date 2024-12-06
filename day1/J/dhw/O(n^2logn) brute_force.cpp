@@ -6,7 +6,7 @@ using namespace std;
 typedef long long ll;
 int n,m,k,x,y,vis[3005];int tot,fir[3005],nxt[6005],to[6005];
 int md[3005],siz[3005],dis[3005],rd[3005];queue<int> q;
-struct nd{ll v;int c;} f[3005][3005],g[3005][3005],res[3005];nd inf={1ll<<60,1<<28};
+struct nd{ll v;int c;} f[3005][3005],g[3005][3005],res[3005];nd inf={1ll<<60,1<<30};
 bool operator <(const nd &x,const nd &y)
 {
 	if(x.v!=y.v) return x.v<y.v;
@@ -51,12 +51,15 @@ void dfs2(int now,int fa,ll cv)
 				if(j<rd[v]) g[now][j]=min(g[now][j],g[v][j+1]+cur);
 			}
 			for(int j=1;j<=min(rd[now],rd[v]);j++) f[now][j]=min(f[now][j],f[now][j-1]);
-			if(rd[v]<rd[now])
+			for(int j=rd[v]+1;j<=rd[now];j++)
 			{
-				nd c1=f[now][rd[now]-1],c2=f[now][rd[now]]+res[v];
-				nd c3=f[v][rd[v]]+min(f[now][rd[now]],g[now][rd[now]]);
-				f[now][rd[now]]=min(min(c1,c2),c3);
-				g[now][rd[now]]+=res[v];
+				if(j==rd[v]+1)
+				{
+					nd c1=f[now][rd[v]],c2=f[v][rd[v]]+min(f[now][rd[now]],g[now][j]);
+					f[now][j]=min(f[now][j]+res[v],min(c1,c2));
+				}
+				else f[now][j]+=res[v];
+				g[now][j]+=res[v];
 			}
 			for(int j=min(rd[now]-1,rd[v]);j>=0;j--) g[now][j]=min(g[now][j],g[now][j+1]);
 		}
