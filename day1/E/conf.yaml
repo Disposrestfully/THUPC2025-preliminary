@@ -16,7 +16,7 @@ partial score: false
 pre: []
 samples:
   - cases: [1]
-time limit: 1.0
+time limit: 0.5
 title:
   zh-cn: 背向而行
 type: program
