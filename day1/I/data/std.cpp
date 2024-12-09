@@ -24,15 +24,19 @@ inline int C(re int x,re int y){
 	return 1ll*fac[x]*inv[y]%M*inv[x-y]%M;
 }
 int main(){
-	freopen("1.in","r",stdin);
-	freopen("1.ans","w",stdout);
 	t=read(),n=1e5;
 	for(re int i=fac[0]=1;i<=n;++i)fac[i]=1ll*fac[i-1]*i%M;
 	inv[n]=ksm(fac[n],M-2);
 	for(re int i=n-1;~i;--i)inv[i]=1ll*inv[i+1]*(i+1)%M;
 	while(t--){
 		n=read();
-		for(re int i=1;i<=n;++i)a[i]=read(),b[i]=read();
+		for(re int i=1;i<=n;++i){
+			a[i]=read(),b[i]=read();
+			if(a[i]==-1)assert(b[i]==-1);
+			else assert(b[i]!=-1);
+			assert(a[i]<=n&&b[i]<=n);
+			if(a[i]<b[i])swap(a[i],b[i]);
+		}
 		re bool ia=1;
 		for(re int i=1;i<=n;++i)
 			if(a[i]!=-1&&a[i]+b[i]!=i)
@@ -43,12 +47,20 @@ int main(){
 		if(n>20&&n%2==1)ia=0;
 		if(n<=20&&a[n]!=-1&&max(a[n],b[n])!=11)ia=0;
 		if(n>20&&a[n]!=-1&&abs(a[n]-b[n])!=2)ia=0;
+		for(re int i=1;i<=20;++i)if(a[i]>=11)ia=0;
 		if(!ia){
 			puts("0");
 			continue;
 		}
 		for(re int i=20;i<n;++i)a[i]=i>>1,b[i]=i-a[i];
-		if(n<=20)a[n]=11,b[n]=n-11;
+		if(n<=20){
+			a[n]=11,b[n]=n-11;
+			if(a[n-1]!=10&&a[n-1]!=-1){
+				puts("0");
+				continue;
+			}
+			a[n-1]=10,b[n-1]=n-11;
+		}
 		else a[n]=n/2+1,b[n]=n/2-1;
 		re int lst=0,ans=1;
 		for(re int i=1;i<=n;++i)if(a[i]!=-1){

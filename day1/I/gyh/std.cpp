@@ -35,6 +35,7 @@ int main(){
 			if(a[i]==-1)assert(b[i]==-1);
 			else assert(b[i]!=-1);
 			assert(a[i]<=n&&b[i]<=n);
+			if(a[i]<b[i])swap(a[i],b[i]);
 		}
 		re bool ia=1;
 		for(re int i=1;i<=n;++i)
@@ -46,12 +47,20 @@ int main(){
 		if(n>20&&n%2==1)ia=0;
 		if(n<=20&&a[n]!=-1&&max(a[n],b[n])!=11)ia=0;
 		if(n>20&&a[n]!=-1&&abs(a[n]-b[n])!=2)ia=0;
+		for(re int i=1;i<=20;++i)if(a[i]>=11)ia=0;
 		if(!ia){
 			puts("0");
 			continue;
 		}
 		for(re int i=20;i<n;++i)a[i]=i>>1,b[i]=i-a[i];
-		if(n<=20)a[n]=11,b[n]=n-11;
+		if(n<=20){
+			a[n]=11,b[n]=n-11;
+			if(a[n-1]!=-1&&a[n-1]!=10){
+				puts("0");
+				continue;
+			}
+			a[n-1]=10,b[n-1]=n-11;
+		}
 		else a[n]=n/2+1,b[n]=n/2-1;
 		re int lst=0,ans=1;
 		for(re int i=1;i<=n;++i)if(a[i]!=-1){
