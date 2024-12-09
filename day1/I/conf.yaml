@@ -59,4 +59,8 @@ users:
     wa5:
       expected: == 0
       path: ./gyh/wa5.cpp
+  wys:
+    std:
+      expected: == 100
+      path: ./wys/std.cpp
 version: 1
