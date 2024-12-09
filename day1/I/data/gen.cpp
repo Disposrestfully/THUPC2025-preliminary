@@ -15,6 +15,7 @@ void Genrnd(int T,int LN,int RN,int V1,int V2){
 			if(Rnd()%100<V1){
 				if(Rnd()%100<V2)a[i]=Rnd()%(i+2),b[i]=Rnd()%(i+2);
 				else a[i]=Rnd()%(i+1),b[i]=i-a[i];
+				a[i]=min(a[i],n),b[i]=min(b[i],n);
 			}
 			else a[i]=b[i]=-1;
 		}

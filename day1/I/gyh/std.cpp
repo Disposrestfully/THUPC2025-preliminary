@@ -30,7 +30,12 @@ int main(){
 	for(re int i=n-1;~i;--i)inv[i]=1ll*inv[i+1]*(i+1)%M;
 	while(t--){
 		n=read();
-		for(re int i=1;i<=n;++i)a[i]=read(),b[i]=read();
+		for(re int i=1;i<=n;++i){
+			a[i]=read(),b[i]=read();
+			if(a[i]==-1)assert(b[i]==-1);
+			else assert(b[i]!=-1);
+			assert(a[i]<=n&&b[i]<=n);
+		}
 		re bool ia=1;
 		for(re int i=1;i<=n;++i)
 			if(a[i]!=-1&&a[i]+b[i]!=i)
