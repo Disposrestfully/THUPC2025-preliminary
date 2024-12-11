@@ -6,16 +6,39 @@ compile:
   java: ''
   pas: -O2
   py: ''
-data: []
+data:
+- cases:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
 folder: problem
 memory limit: 512 MiB
 name: distribution
 partial score: false
 samples:
-  - cases: [1, 2, 3]
+  - cases: [1, 2]
 time limit: 1.0
 title:
   zh-cn: 摊位分配
 type: program
-users: {}
+users:
+  cxr:
+    std:
+      expected: == 100
+      path: ./cxr/std.cpp
+    wa1:
+      expected: < 100
+      path: ./cxr/wa1.cpp
+    wa2:
+      expected: < 100
+      path: ./cxr/wa2.cpp
+    wa3:
+      expected: < 100
+      path: ./cxr/wa3.cpp
 version: 2
