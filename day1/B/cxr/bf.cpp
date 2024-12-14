@@ -15,11 +15,12 @@ inline int read(){
     }
     return x*w;
 }
-int n,ans;
+int n,m;
+char str[N];
 int a[N][N],b[N][N],c[N][N];
 inline void move(int lx,int rx,int ly,int ry,int d){
     for (int i=1;i<=n;++i)
-        for (int j=1;j<=n;++j){
+        for (int j=1;j<=m;++j){
             if (i>=lx && i<=rx && j>=ly && j<=ry) c[i][j]=-1;
             else c[i][j]=a[i][j];
         }
@@ -29,16 +30,17 @@ inline void move(int lx,int rx,int ly,int ry,int d){
 }
 inline bool check(){
     for (int i=1;i<=n;++i)
-        for (int j=1;j<=n;++j)
+        for (int j=1;j<=m;++j)
             if (~c[i][j] && b[i][j]!=c[i][j])
                 return 0;
     return 1;
 }
-inline void solve(int d){
+inline int solve(int d){
+    int ans=-1;
     for (int lx=1;lx<=n;++lx){
         for (int rx=lx;rx<=n;++rx){
-            for (int ly=d+1;ly<=n;++ly){
-                for (int ry=ly;ry<=n;++ry){
+            for (int ly=d+1;ly<=m;++ly){
+                for (int ry=ly;ry<=m;++ry){
                     int now=(rx-lx+1)*(ry-ly+1);
                     if (now<ans) continue;
                     move(lx,rx,ly,ry,d);
@@ -50,17 +52,21 @@ inline void solve(int d){
             }
         }
     }
+    return ans;
 }
 int main(){
-    n=read();
-    for (int i=1;i<=n;++i)
-        for (int j=1;j<=n;++j)
-            a[i][j]=read();
-    for (int i=1;i<=n;++i)
-        for (int j=1;j<=n;++j)
-            b[i][j]=read();
-    for (int i=1;i<=n;++i)
-        solve(i);
-    printf("%d\n",ans);
+    n=read(),m=read();
+    for (int i=1;i<=n;++i){
+        scanf("%s",str+1);
+        for (int j=1;j<=m;++j)
+            a[i][j]=str[j]-'0';
+    }
+    for (int i=1;i<=n;++i){
+        scanf("%s",str+1);
+        for (int j=1;j<=m;++j)
+            b[i][j]=str[j]-'0';
+    }
+    for (int i=1;i<m;++i)
+        printf("%d%c",solve(i),i==m-1?'\n':' ');
     return 0;
 }

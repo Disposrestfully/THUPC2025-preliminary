@@ -23,8 +23,8 @@ char str[N];
 stack<int>sta;
 inline void debug(){
     for (int i=1;i<=n;++i){
-        for (int j=1;j<=n;++j)
-            printf("%d ",a[i][j]);
+        for (int j=1;j<=m;++j)
+            printf("%d ",p[i][j]);
         puts("");
     }
 }
@@ -33,7 +33,7 @@ inline int calc(int lx,int ly,int rx,int ry){
     return s[rx][ry]+s[lx-1][ly-1]-s[lx-1][ry]-s[rx][ly-1];
 }
 inline int solve(int d){
-    int lx=n+1,rx=0,ly=n+1,ry=0,sum=0;
+    int lx=n+1,rx=0,ly=m+1,ry=0,sum=0;
     int ans=-1;
     for (int i=1;i<=n;++i)
         for (int j=1;j<=m;++j){
@@ -45,11 +45,12 @@ inline int solve(int d){
                 lx=min(lx,i),rx=max(rx,i);
                 if (j-d<=0) return -1;
                 ly=min(ly,j-d),ry=max(ry,j-d);
-                if (ry-ly+1>d) return -1;
+                //if (ry-ly+1>d) return -1;
             }
             s[i][j]=s[i-1][j]+s[i][j-1]-s[i-1][j-1]+(p[i][j]==1);
             sum+=(p[i][j]==1);
         }
+    //debug();
     //printf("%d %d %d %d\n",lx,rx,ly,ry);
     for (int i=1;i<=n;++i){
         if (i<rx) continue;
@@ -93,5 +94,6 @@ int main(){
     }
     for (int i=1;i<m;++i)
         printf("%d%c",solve(i),i==m-1?'\n':' ');
+    //printf("%d\n",solve(3));
     return 0;
 }
