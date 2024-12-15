@@ -12,7 +12,7 @@ memory limit: 1024 MiB
 name: kaeriten
 partial score: false
 samples:
-  - cases: [1, 2, 3]
+  - cases: [1, 2, 3, 4, 5, 6]
 time limit: 1.0
 title:
   zh-cn: 用于试题标题的中文名称
