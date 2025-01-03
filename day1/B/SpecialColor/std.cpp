@@ -10,8 +10,18 @@ struct Info {
 	int pos, val;
 } stk[504];
 char w[504][504], y[504][504];
-int stay[504][504], mvfr[504][504], mvto[504][504];
-int topmv[504], ans[504];
+int stay[504][504], mvfr[504][504], mvto[504][504], sum[504][504];
+int topmv[504], ans[504], total;
+inline bool check(int d, int x1, int x2, int y1, int y2) {
+	--x1; --y1;
+	if (y2 - y1 < d) {
+		int y3 = y1 + d, y4 = y2 + d;
+		return sum[x2][y2] + sum[x1][y1] - sum[x1][y2] - sum[x2][y1] \
+				+ sum[x2][y4] + sum[x1][y3] - sum[x1][y4] - sum[x2][y3] == total;
+		}
+	int y3 = y2 + d;
+	return sum[x2][y3] + sum[x1][y1] - sum[x2][y1] - sum[x1][y3] == total;
+}
 int main(){
 	int n, m, clim, d, i, j, lmin, lmax, rmin, rmax, mmin, mmax, tbd, dbd, llbd, lrbd, rlbd, rrbd, stop, height, weight, area, lpos, open = 1;
 	scanf("%d %d", &n, &m);
@@ -22,6 +32,7 @@ int main(){
 		clim = m - d;
 		lmin = rmin = mmin = tbd = INF;
 		lmax = rmax = mmax = dbd = 0;
+		memset(sum, 0, sizeof(sum));
 		
 		for (i = 1; i <= n; ++i) {
 			for (j = 1; j <= clim; ++j) {
@@ -30,6 +41,7 @@ int main(){
 				if (j <= d) mvfr[i][j] = 0;
 
 				if (stay[i][j] == 0) {
+					sum[i][j] = 1;
 					if (mvfr[i][j] == 0) {
 						if (mvto[i][j] == 0) {
 							ans[d] = -1;
@@ -60,6 +72,7 @@ int main(){
 			if (ans[d] == -1) break;
 			for (; j <= m; ++j) {
 				if (w[i][j] != y[i][j]) {
+					sum[i][j] = 1;
 					if (mvfr[i][j] == 0) {
 						ans[d] = -1;
 						break;
@@ -78,9 +91,20 @@ int main(){
 		// Leftmost / rightmost must move width must < d
 		if (lmax - lmin > d || rmax - rmin > d) {
 			ans[d] = -1;
-			break;
+			continue;
 		}
-		// Check middle?
+		// 2-D prefix sum
+		for (i = 1; i <= n; ++i) {
+			for (j = 2; j <= m; ++j) {
+				sum[i][j] += sum[i][j - 1];
+			}
+		}
+		for (i = 2; i <= n; ++i) {
+			for (j = 1; j <= m; ++j) {
+				sum[i][j] += sum[i - 1][j];
+			}
+		}
+		total = sum[n][m];
 
 		// Set boundary; tbd = top max, dbd = down min
 		// fprintf(stderr, "<<%d %d | %d %d | %d %d>>\n", lmin, lmax, mmin, mmax, rmin, rmax);
@@ -110,15 +134,15 @@ int main(){
 					else height = 0;
 					// fprintf(stderr, "@ %d %d %d h = %d\n", d, i, j, height);
 					if (stop == 0) {
-						if (j <= lrbd) stk[++stop] = (Info) {j, height};
+						if (j <= lrbd && height) stk[++stop] = (Info) {j, height};
 					}
 					else {
 						lpos = j;
 						while (stop && stk[stop].val > height) {
 							if (i >= dbd && j > rlbd) {
 								area = (j - stk[stop].pos) * stk[stop].val;
-								// if (d == 40) fprintf(stderr, "| %d %d [%d, %d) %d = %d\n", d, i, stk[stop].pos, j, stk[stop].val, area);
-								cmax(ans[d], area);
+								// fprintf(stderr, "| %d %d [%d, %d) %d = %d\n", d, i, stk[stop].pos, j, stk[stop].val, area);
+								if (check(d, i - stk[stop].val + 1, i, stk[stop].pos, j - 1)) cmax(ans[d], area);
 							}
 							lpos = stk[stop].pos;
 							--stop;
@@ -134,8 +158,8 @@ int main(){
 			if (i >= dbd && open) {
 				while (stop) {
 					area = (rrbd - stk[stop].pos + 1) * stk[stop].val;
-					// if (d == 40) fprintf(stderr, "| %d %d [%d, %d] %d = %d\n", d, i, stk[stop].pos, rrbd, stk[stop].val, area);
-					cmax(ans[d], area);
+					// fprintf(stderr, "| %d %d [%d, %d] %d = %d\n", d, i, stk[stop].pos, rrbd, stk[stop].val, area);
+					if (check(d, i - stk[stop].val + 1, i, stk[stop].pos, rrbd)) cmax(ans[d], area);
 					--stop;
 				}
 			}
