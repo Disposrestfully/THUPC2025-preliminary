@@ -15,39 +15,20 @@ inline int read(){
     }
     return x*w;
 }
-int n,m,ans;
+int n,m,ans,k;
 int a[N][N],b[N][N];
+int p[N];
 int main(){
     srand(time(0));
-    //n=rand()%20+2;
-    //n=rand()%100+1,m=rand()%100+2;
-    n=500,m=100;
-    for (int i=1;i<=n;++i)
+    n=500,m=500;
+    
+    for (int i=1;i<=n;++i){
+        k=rand()%100+1;
+        for (int i=0;i<k;++i)
+            p[i]=rand()&1;
         for (int j=1;j<=m;++j)
-            a[i][j]=b[i][j]=0;
-    for (int i=1;i<=50;++i){
-        int x=rand()%n+1,y=rand()%m+1;
-        a[x][y]=b[x][y]=1;
+            a[i][j]=b[i][j]=p[j%k];
     }
-    int lx=rand()%n+1,rx=rand()%n+1;
-    int ly=rand()%m+1,ry=rand()%m+1;
-    if (lx>rx) swap(lx,rx);
-    if (ly>ry) swap(ly,ry);
-    //while (rx-lx+1>10){
-    //    lx=rand()%n+1,rx=rand()%n+1;
-    //    if (lx>rx) swap(lx,rx);
-    //}
-    while (ly==1 || ry-ly+1>10){
-        ly=rand()%m+1,ry=rand()%m+1;
-        if (ly>ry) swap(ly,ry);
-    }
-    //for (int i=lx;i<=rx;++i)   
-    //    for (int j=ly;j<=ry;++j)
-    //        b[i][j]=rand()&1;
-    int d=rand()%(ly-1)+1;
-    for (int i=lx;i<=rx;++i)   
-        for (int j=ly;j<=ry;++j)
-            b[i][j-d]=a[i][j];
     
     printf("%d %d\n",n,m);
     for (int i=1;i<=n;++i){

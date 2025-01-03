@@ -6,13 +6,13 @@ int p[N],a[N],b[N];
 int sta[N],len[N];
 int main(){
     srand(time(0));
-    n=100000;
+    n=1000000;
     for (int i=1;i<=n;++i)
         p[i]=i;
     now=1;
     while (now<=n){
         //printf("%d %d\n",now,n);
-        len[now]=rand()%min(50,n-now+1)+1;
+        len[now]=rand()%min(10,n-now+1)+1;
         if (rand()%5==0 && now+len[now]<=n){
             int l=len[now];
             for (int i=now;i<=now+l-1;++i)
@@ -25,7 +25,7 @@ int main(){
         sta[++top]=now;
         now=now+len[now];
         int tmp=rand()%min(top+1,5);
-        if (top<20) tmp=0;
+        if (top<15) tmp=0;
         else tmp=rand()%4+2;
         if (now>n) tmp=top;
         for (int i=1;i<=tmp;++i)

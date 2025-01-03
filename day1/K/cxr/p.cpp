@@ -6,8 +6,8 @@ int main(){
         system("./gen > 1.in");
         system("./std < 1.in > 1.ans");
         system("./chj < 1.in > 1.out");
-        if (system("diff -B 1.out 1.ans")) continue;
-        else return 0;
+        if (system("diff -B 1.out 1.ans")) return 0;
+        //else return 0;
         printf("AC %d\n",++cas);
     }
     return 0;

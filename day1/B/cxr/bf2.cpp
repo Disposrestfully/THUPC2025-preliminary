@@ -74,7 +74,10 @@ inline int solve(int d){
             if (nowl>nowr) continue;
             int S=(nowr-nowl+1)*len[i][j];
             if (!S || S<ans) continue;
-            if (move(up,i,nowl,nowr,d)) ans=S;
+            if (move(up,i,nowl,nowr,d)){
+                printf("%d %d %d %d\n",up,i,nowl,nowr);
+                ans=S;
+            }
         }
     }
     return ans;
@@ -91,8 +94,8 @@ int main(){
         for (int j=1;j<=m;++j)
             b[i][j]=str[j]-'0';
     }
-    //printf("%d\n",solve(2));
-    for (int i=1;i<m;++i)
-        printf("%d%c",solve(i),i==m-1?'\n':' ');
+    printf("%d\n",solve(40));
+    //for (int i=1;i<m;++i)
+    //    printf("%d%c",solve(i),i==m-1?'\n':' ');
     return 0;
 }
