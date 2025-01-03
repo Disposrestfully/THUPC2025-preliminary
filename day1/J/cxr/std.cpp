@@ -48,6 +48,10 @@ int main(){
     n=read(),m=read();
     for (int i=1;i<=m;++i)
         p[c[i]=read()]=2;
+    int ccnt=0;
+    for (int i=1;i<=n;++i)
+        if (p[i]==2) ++ccnt;
+    assert(ccnt==m);
     for (int i=1;i<n;++i){
         int u=read(),v=read();
         add(u,v),add(v,u);

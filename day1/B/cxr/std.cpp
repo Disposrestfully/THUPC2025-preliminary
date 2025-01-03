@@ -78,6 +78,7 @@ inline int solve(int d){
             ans=max(ans,(nowr-nowl+1)*c[i][j]);
         }
     }
+    if (ans==0) return -1;
     return ans;
 }
 int main(){

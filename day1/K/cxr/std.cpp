@@ -18,21 +18,22 @@ inline int read(){
 }
 int n,tot,now,top;
 int op[N],p[N],dep[N],rk[N];
-int rev[N],fol[N];
-int a[N],b[N],sta[N];
+int rev[N],fol[N],ord[N];
+int a[N],b[N],sta[N],vis[N];
 inline void print(){
     for (int i=1;i<=tot;++i){
         int x=b[i];
         if (!dep[x]){
             //printf("%d %d %d\n",x,rev[x],fol[x]);
-            putchar('.');
-            while (fol[x]){
-                putchar('.');
-                ++x;
-            }
-            while (rev[x]){
+            if (rev[x]){
                 printf("*.");
                 ++x;
+            }else{
+                putchar('.');
+                while (fol[x]){
+                    putchar('.');
+                    ++x;
+                }
             }
         }else if (rk[x]==1 && fol[x]){
             int d=dep[x];
@@ -49,7 +50,7 @@ inline void print(){
                     ++x;
                 }
             }else{
-                int d=dep[x],r=rk[x];
+                /*int d=dep[x],r=rk[x];
                 if (r==1){
                     printf(".%d-%d",d,r);
                     while (rev[x]){
@@ -57,12 +58,13 @@ inline void print(){
                         ++x;
                     }
                 }else{
-                    while (rev[x]){
+                    if (rev[x]){
                         printf(".*");
                         ++x;
                     }
                     printf(".%d-%d",d,r);
-                }
+                }*/
+                printf("*.%d-%d",dep[x],rk[x]);
             }
         }
     }
@@ -70,6 +72,7 @@ inline void print(){
 }
 int main(){
     n=read();
+    assert(1<=n && n<=1000000);
     for (int i=1;i<=n;++i)
         p[op[i]=read()]=i;
     sort(op+1,op+n+1);
@@ -79,14 +82,35 @@ int main(){
         if (p[i+1]==p[i]-1) rev[p[i]]=1;
     }
     for (int i=1;i<=n;++i)
-        if (!fol[p[i-1]] && !rev[p[i-1]]) a[++tot]=p[i];
-    for (int i=1;i<=tot;++i) b[i]=a[i];
+        if (!fol[p[i-1]]) a[++tot]=p[i];
+    for (int i=1;i<=tot;++i) ord[b[i]=a[i]]=i;
     sort(b+1,b+tot+1);
     for (int i=1;i<=tot;++i){
-        //printf("%d %d\n",b[i],a[i]);
+        int id,tmp,mx;
+        //printf("%d %d\n",a[i],b[i]);
+        if (rev[b[i]]){
+            //puts("GO");
+            id=1,tmp=top,mx=1;
+            while (tmp>1 && ord[sta[tmp]]+1==ord[sta[tmp-1]]){
+                //printf("[%d %d]\n",sta[tmp],id);
+                rk[sta[tmp]]=id++;
+                mx=max(mx,dep[sta[tmp]]);
+                --tmp;
+            }
+            rk[sta[tmp]]=id++;
+            mx=max(mx,dep[sta[tmp]]);
+            if (tmp==top) mx=0;
+            for (int i=tmp;i<=top;++i)
+                dep[sta[i]]=mx,vis[sta[i]]=1;
+            for (int i=1;i<tmp;++i)
+                dep[sta[i]]=max(dep[sta[i]],mx+1);
+            top=tmp-1;
+        }
+        while (now<tot && vis[a[now+1]]) ++now;
         sta[++top]=b[i];
         if (sta[top]==a[now+1]){
-            int id=1,tmp=top,mx=1;
+            //printf("[%d %d]\n",top,now);
+            id=1,tmp=top,mx=1;
             while (tmp && sta[tmp]==a[now+1]){
                 ++now;
                 rk[sta[tmp]]=id++;
@@ -100,6 +124,7 @@ int main(){
                 dep[sta[i]]=max(dep[sta[i]],mx+1);
             top=tmp;
         }
+        while (now<tot && vis[a[now+1]]) ++now;
     }
     if (top || now<tot) return puts("-1"),0;
     print();

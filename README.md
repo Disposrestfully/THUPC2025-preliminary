@@ -1,17 +1,9 @@
-# THUPC2025-preliminary
+# THUPC2025初赛
 
-|      | 中文题目名      | 英文题目名               | 出题人 | 验题人 |
-| ---- | --------------- | ------------------------ | ------ | ------ |
-| A    | 骑行计划        | Cycling Plan             | xza    |        |
-| B    | 挑战 LLM        | Beating LLM              | chj    |        |
-| C    |                 | Harmful Machine Learning | gyh    | ljh    |
-| D    | 摊位分配        | Distribution             | chj    | cxr    |
-| E    | 背向而行        | split                    | wzt    |        |
-| F    |                 | sort                     | psj    |        |
-| G    |                 | Imyourfan                | gyh    | ljh    |
-| H    | waht 先生的法阵 | Mr.waht                  | dhw    | cxr    |
-| I    | 乒乓球赛        |                          | gyh    | zym    |
-| J    | 辞甲猾扎        | cjhz                     | zym    | dhw    |
-| K    |                 | Kaeriten                 | chj    |        |
-| L    |                 | checkpoint               | psj    | cxr    |
-| M    | （整活题）      |                          | rsy    |        |
+来自 THUPC2025（2025年清华大学学生程序设计竞赛暨高校邀请赛）初赛。
+
+### 题目使用协议
+
+1. 任何单位或个人都可以免费使用或转载本仓库的题目；
+2. 任何单位或个人在使用本仓库题目时，应做到无偿、公开，严禁使用这些题目盈利或给这些题目添加特殊权限；
+3. 如果条件允许，请在使用本仓库题目时同时提供数据、标程、题解等资源的获取方法；否则，请附上本仓库地址 或 [算协公开仓库链接](https://thusaac.com/public)。
